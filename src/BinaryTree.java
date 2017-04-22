@@ -16,6 +16,14 @@ public class BinaryTree {
         }
     }
 
+    private BinaryNode rotateRight(BinaryNode node) {
+        return node;
+    }
+
+    private BinaryNode rotateLeft(BinaryNode node) {
+        return node;
+    }
+
     private BinaryNode placeInTree(BinaryNode currentNode, BinaryNode binaryNode) {
 
         if (currentNode == null) {
@@ -36,30 +44,27 @@ public class BinaryTree {
 
         currentNode.setHeight(1 + Math.max(currentNode.getLeft().getHeight(), currentNode.getRight().getHeight()));
 
-
         int balance = currentNode.getLeft().getHeight() - currentNode.getRight().getHeight();
 
         if (balance > 1 && binaryNode.getValue() < currentNode.getLeft().getValue()) {
-            return rightRotate(currentNode);
+            return rotateRight(currentNode);
         }
 
         if (balance < -1 && binaryNode.getValue() > currentNode.getRight().getValue()) {
-            return leftRotate(currentNode);
+            return rotateLeft(currentNode);
         }
 
         // Left Right Case
         if (balance > 1 && binaryNode.getValue() > currentNode.getLeft().getValue()) {
-            currentNode.setLeft(leftRotate(currentNode.getLeft()));
-            return rightRotate(currentNode);
+            currentNode.setLeft(rotateLeft(currentNode.getLeft()));
+            return rotateRight(currentNode);
         }
 
         // Right Left Case
         if (balance < -1 && currentNode.getValue() < currentNode.getRight().getValue()) {
-            currentNode.getRight(rightRotate(currentNode.getRight()));
-            return leftRotate(currentNode);
+            currentNode.setRight(rotateRight(currentNode.getRight()));
+            return rotateLeft(currentNode);
         }
-
-
 
         return currentNode;
     }
