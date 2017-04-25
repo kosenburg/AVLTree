@@ -5,22 +5,26 @@ public class BinaryNode {
     private BinaryNode left;
     private BinaryNode right;
     private int value;
+    private int duplicateCount;
     private int height;
 
     public BinaryNode(BinaryNode left, int value, BinaryNode right) {
         setLeft(left);
         setRight(right);
         setValue(value);
-        setHeight(0);
+        setHeight(1);
+    }
+
+    public int getDuplicateCount() {
+        return duplicateCount;
     }
 
     public void setHeight(int height) {
         this.height = height;
     }
 
-    public void setHeight() {
-        int temp = (1 + Math.max(left.getHeight(), right.getHeight()));
-        height = temp;
+    public void incrementCount() {
+        duplicateCount++;
     }
 
     public int getHeight() {
