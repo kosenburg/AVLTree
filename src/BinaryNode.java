@@ -18,6 +18,11 @@ public class BinaryNode {
         this.height = height;
     }
 
+    public void setHeight() {
+        int temp = (1 + Math.max(left.getHeight(), right.getHeight()));
+        height = temp;
+    }
+
     public int getHeight() {
         return height;
     }
