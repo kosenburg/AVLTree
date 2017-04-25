@@ -1,6 +1,9 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 
 public class BinaryTree {
     private BinaryNode root;
+    private BufferedWriter output;
 
     public BinaryTree(int value) {
         root = new BinaryNode(value);

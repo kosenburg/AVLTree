@@ -16,29 +16,19 @@ public class Main {
 
         BinaryTree binaryTree = new BinaryTree();
 
-        ArrayList<String> finals = new ArrayList<>();
         for (String string: tokens) {
             String[] temp = string.trim().split(" ");
 
             if (temp[0].equals("+")) {
-                //System.out.println("Inserting: " + temp[1]);
                 binaryTree.addToTree(Integer.parseInt(temp[1]));
-                finals.add(temp[1]);
             } else if (temp[0].equals("-")) {
-                //System.out.println("Deleteing: " + temp[1]);
                 binaryTree.removeFromTree(Integer.parseInt(temp[1]));
-                int index = finals.indexOf(temp[1]);
-                if (index != -1) {
-                    finals.remove(index);
-                }
-
             } else {
                 //System.err.println("Invalid entry:" + string);
             }
         }
 
 
-        System.out.println("Leftover:" + finals.size());
         //binaryTree.printInorder("inorder");
         binaryTree.printInorder("preorder");
 
